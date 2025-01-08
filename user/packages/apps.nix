@@ -25,7 +25,6 @@
     bitwarden-cli
     # Music
     g4music
-    yesplaymusic
     ncmpcpp
     ncspot
     go-musicfox
