@@ -19,6 +19,7 @@
     ../../general/btrfs/autoscrub.nix
     ../../general/btrfs/snapper.nix
     ../../general/btrfs/docker.nix
+    ../../general/ssd/trim.nix
     ../../general/keyboard/vamillo.nix
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
