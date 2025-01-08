@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     # Terminal
     (blackbox-terminal.override { sixelSupport = true; })
+    ptyxis
     # Web Browser
     chromium
     google-chrome
