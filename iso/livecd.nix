@@ -17,5 +17,15 @@ _: {
     ../packages/gaming.nix
   ];
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      mutter = prev.mutter.overrideAttrs (oldAttrs: {
+        patches = oldAttrs.patches or [ ] ++ [
+          ./wayland-text-input-v1-Implement-basic-text-input-v1-.patch
+        ];
+      });
+    })
+  ];
+
   isoImage.squashfsCompression = "zstd";
 }
