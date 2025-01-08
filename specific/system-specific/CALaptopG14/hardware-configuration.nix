@@ -35,6 +35,7 @@
     options = [
       "subvol=root"
       "compress=zstd"
+      "discard=async"
     ];
   };
 
@@ -44,6 +45,7 @@
     options = [
       "subvol=home"
       "compress=zstd"
+      "discard=async"
     ];
   };
 
@@ -53,6 +55,7 @@
     options = [
       "subvol=persistent"
       "compress=zstd"
+      "discard=async"
     ];
     neededForBoot = true;
   };
@@ -63,6 +66,7 @@
     options = [
       "subvol=nix"
       "compress=zstd"
+      "discard=async"
       "noatime"
     ];
   };
