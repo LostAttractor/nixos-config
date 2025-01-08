@@ -6,6 +6,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
     # Nix Hardware
     nixos-hardware.url = "github:nixos/nixos-hardware";
+    # Disko
+    disko.url = "github:nix-community/disko";
     # Impermanence
     impermanence.url = "github:nix-community/impermanence";
     # lanzaboote (Secure boot)
@@ -70,6 +72,32 @@
             ./lanzaboote.nix
             ./home-manager.nix
             nixos-hardware.nixosModules.asus-zephyrus-ga401
+            impermanence.nixosModules.impermanence
+            lanzaboote.nixosModules.lanzaboote
+            home-manager.nixosModules.home-manager
+            sops-nix.nixosModules.sops
+            aagl.nixosModules.default
+            daeuniverse.nixosModules.daed
+            flake-programs-sqlite.nixosModules.programs-sqlite
+            { nixpkgs.config.allowUnfree = true; }
+          ];
+        };
+        CALaptopR9000P = nixpkgs.lib.nixosSystem rec {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs user system;
+          };
+          modules = with inputs; [
+            ./configuration.nix
+            ./platform/desktop
+            ./specific/system-specific/CALaptopR9000P
+            ./specific/hardware-specific/lenovo-legion-16ach6h
+            ./specific/architecture-specific/x86-64
+            ./specific/user-specific
+            ./lanzaboote.nix
+            ./home-manager.nix
+            disko.nixosModules.disko
+            nixos-hardware.nixosModules.lenovo-legion-16ach6h  # hardware.nvidia.prime.offload.enable may cause xorg crash
             impermanence.nixosModules.impermanence
             lanzaboote.nixosModules.lanzaboote
             home-manager.nixosModules.home-manager
