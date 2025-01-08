@@ -17,25 +17,9 @@
     "xhci_pci"
     "usbhid"
   ];
+  boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
-  boot.kernelParams = [
-    "zswap.enabled=1"
-    "zswap.shrinker_enabled=1"
-  ];
-
-  # Use systemd-cryptenroll to auto unlock luks partition
-  boot.initrd.systemd.enable = true;
-
-  security.tpm2.enable = true;
-  security.tpm2.pkcs11.enable = true;
-  security.tpm2.pkcs11.package = pkgs.tpm2-pkcs11.override { abrmdSupport = false; }; # Using Kernel RM
-  security.tpm2.tctiEnvironment.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    (tpm2-tools.override { abrmdSupport = false; })
-    tpm2-tss
-  ];
 
   boot.initrd.luks.devices."lvm-encrypted".device = "/dev/disk/by-uuid/468b2786-745a-4937-9123-4f4e5ba58d12";
 

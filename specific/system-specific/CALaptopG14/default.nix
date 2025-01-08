@@ -23,6 +23,8 @@
     ../../general/keyboard/vamillo.nix
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ../../general/linux/tpm2.nix
+    ../../general/linux/zswap.nix
     # Persistent
     ./persistent.nix
     # Featrues
